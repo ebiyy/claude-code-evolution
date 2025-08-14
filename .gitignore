@@ -61,3 +61,7 @@ backups/
 # Personal patterns (not shared)
 patterns/personal/
 agents/personal/
+
+# Concept and planning files
+.concept/
+旧gist計画/
