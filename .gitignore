@@ -1,0 +1,63 @@
+# ================================
+# Claude Code Evolution System
+# ================================
+
+# Claude local settings
+.claude/settings.local.json
+.claude/*.local.md
+.claude/learnings/personal/
+.claude/backlog/*/personal/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Build outputs
+dist/
+build/
+*.egg-info/
+
+# Logs
+*.log
+logs/
+.claude/logs/
+
+# Test coverage
+coverage/
+.coverage
+htmlcov/
+*.lcov
+
+# Temporary files
+*.tmp
+*.cache
+.claude/cache/
+.claude/tmp/
+
+# Vector DB local storage
+vectordb/
+chroma_db/
+*.index
+
+# Backups
+*.backup
+backups/
+
+# Personal patterns (not shared)
+patterns/personal/
+agents/personal/
