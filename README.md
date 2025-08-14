@@ -11,6 +11,8 @@
 
 [Installation](#-installation) • [Quick Start](#-quick-start) • [Documentation](./docs) • [Examples](./examples) • [Contributing](./CONTRIBUTING.md)
 
+[日本語版 README](./README.ja.md)
+
 </div>
 
 ---
