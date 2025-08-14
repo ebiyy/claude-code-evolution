@@ -60,7 +60,9 @@ mkdir -p .claude/automation/{hooks,commands,workflows}
 
 # Create initial configuration
 echo -e "${YELLOW}Creating initial configuration...${NC}"
-cat > .claude/settings.json << 'EOF'
+
+# Create evolution-specific configuration
+cat > .claude/evolution-config.json << EOF
 {
   "version": "1.0.0",
   "domain": "web",
@@ -78,6 +80,19 @@ cat > .claude/settings.json << 'EOF'
 }
 EOF
 
+# Create Claude Code settings.json with minimal configuration
+# This file follows the official Claude Code schema
+cat > .claude/settings.json << 'EOF'
+{
+  "permissions": {
+    "additionalDirectories": [".claude"]
+  },
+  "env": {
+    "CLAUDE_EVOLUTION": "enabled"
+  }
+}
+EOF
+
 # Create SYSTEM.md
 cat > .claude/core/SYSTEM.md << 'EOF'
 # Claude Code Evolution System
@@ -91,7 +106,7 @@ This project uses the Claude Code Evolution System for self-learning development
 - **L3 (Cold)**: Archived knowledge
 
 ## Active Domain
-Current domain configuration is loaded from `.claude/settings.json`
+Current domain configuration is loaded from `.claude/evolution-config.json`
 
 ## Learning Status
 Patterns discovered: 0
@@ -117,7 +132,8 @@ Project initialized with Claude Code Evolution System
 
 ## Key Files
 - `.claude/core/SYSTEM.md` - System configuration
-- `.claude/settings.json` - Project settings
+- `.claude/evolution-config.json` - Evolution settings
+- `.claude/settings.json` - Claude Code settings
 
 ## Hot Files
 *No hot files detected yet*
@@ -199,13 +215,13 @@ fi
 # Set up domain if specified
 if [ -n "$DOMAIN" ]; then
     echo -e "${YELLOW}Configuring domain: $DOMAIN${NC}"
-    # Update settings.json with domain
+    # Update evolution-config.json with domain
     if command -v jq &> /dev/null; then
-        jq ".domain = \"$DOMAIN\"" .claude/settings.json > .claude/settings.json.tmp
-        mv .claude/settings.json.tmp .claude/settings.json
+        jq ".domain = \"$DOMAIN\"" .claude/evolution-config.json > .claude/evolution-config.json.tmp
+        mv .claude/evolution-config.json.tmp .claude/evolution-config.json
     else
-        sed -i.bak "s/\"domain\": \"web\"/\"domain\": \"$DOMAIN\"/" .claude/settings.json
-        rm -f .claude/settings.json.bak
+        sed -i.bak "s/\"domain\": \"web\"/\"domain\": \"$DOMAIN\"/" .claude/evolution-config.json
+        rm -f .claude/evolution-config.json.bak
     fi
 fi
 
@@ -215,7 +231,7 @@ echo -e "${GREEN}✅ Claude Code Evolution System initialized successfully!${NC}
 echo ""
 echo "Next steps:"
 echo "1. Review .claude/core/SYSTEM.md for system overview"
-echo "2. Check .claude/settings.json to configure your preferences"
+echo "2. Check .claude/evolution-config.json to configure your preferences"
 echo "3. Start developing with enhanced Claude Code capabilities"
 echo ""
 echo -e "${BLUE}Tip: Use the evolution system commands in Claude Code to maximize productivity${NC}"
