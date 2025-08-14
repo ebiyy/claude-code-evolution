@@ -201,11 +201,23 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Claude Code Evolution System
 This project uses the Claude Code Evolution System. See `.claude/core/SYSTEM.md` for details.
 
+## Evolution Configuration
+Evolution settings are stored in `.claude/evolution-config.json`:
+- Memory tiers: L1 (10 files) → L2 (7 days) → L3 (30 days)
+- Pattern detection: Threshold of 3 occurrences
+- Auto-evolution: Enabled
+
 ## Quick Start
 1. Check current status: `cat .claude/core/SYSTEM.md`
 2. Get next task: Use `/next-task` command
 3. Record learnings: Use `/learn` command
 4. Check evolution: Use `/evolve` command
+
+## Important Paths
+- Evolution config: `.claude/evolution-config.json`
+- System status: `.claude/core/SYSTEM.md`
+- Patterns: `.claude/knowledge/patterns/`
+- Task backlog: `.claude/backlog/tasks/`
 
 ## Project-Specific Notes
 *Add your project-specific instructions here*
