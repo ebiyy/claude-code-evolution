@@ -159,9 +159,13 @@ if [ -d "$HOME/.claude-evolution" ]; then
     echo -e "${YELLOW}Linking to global evolution system...${NC}"
     ln -sf "$HOME/.claude-evolution" .claude-evolution
 else
-    echo -e "${BLUE}Note: Global evolution system not found. Creating local instance...${NC}"
-    mkdir -p .claude-evolution
-    cp -r "$EVOLUTION_ROOT"/* .claude-evolution/ 2>/dev/null || true
+    if [ "$MINIMAL" = true ]; then
+        echo -e "${BLUE}Note: Running in minimal mode. Skipping global system setup.${NC}"
+    else
+        echo -e "${BLUE}Note: Global evolution system not found.${NC}"
+        echo -e "${BLUE}To install the full system, clone the repository:${NC}"
+        echo -e "${BLUE}  git clone https://github.com/ebiyy/claude-code-evolution.git ~/.claude-evolution${NC}"
+    fi
 fi
 
 # Update or create CLAUDE.md in project root
