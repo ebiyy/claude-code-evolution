@@ -19,7 +19,7 @@
 
 ## 🌟 Overview
 
-A comprehensive system that transforms Claude Code from a simple AI assistant into a self-learning, evolving development partner. Handle projects with 10,000+ files while maintaining context, learning from experience, and improving autonomously.
+A pattern collection and sharing system for Claude Code users. Rather than a heavy framework, this is a lightweight toolkit for capturing and sharing successful development patterns that emerge naturally from real projects.
 
 ### ✨ Key Features
 
